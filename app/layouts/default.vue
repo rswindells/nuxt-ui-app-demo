@@ -21,7 +21,7 @@
         />
       </template>
     </UDashboardSidebar>
-    <div class="flex-1">
+    <div class="flex-1 grid grid-rows-[auto_1fr]">
       <UDashboardNavbar
 
         :ui="{ right: 'gap-3' }"
@@ -43,7 +43,7 @@
       <main
         id="content"
         role="main"
-        class="p-6 min-h-screen bg-white flex-1 grid"
+        class="p-6 bg-white flex-1 "
       >
         <NuxtPage />
       </main>
@@ -55,8 +55,8 @@
 const open = ref(false)
 const links = [
   { label: 'Home', to: '/' },
-  { label: 'Contacts', to: '/contacts' }
-//   { label: 'Plans', to: '/plans' },
+  { label: 'Contacts', to: '/contacts' },
+  { label: 'Plans', to: '/plans' }
 //   { label: 'Quotes', to: '/quotes' }
 ]
 </script>

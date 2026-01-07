@@ -1,28 +1,36 @@
 <!-- components/PlanSubNav.vue -->
 <template>
   <UButton
+    v-if="backButton"
     icon="i-heroicons-arrow-left"
     variant="ghost"
     :to="backToPlans"
   >
     Back to plans
   </UButton>
+
   <UNavigationMenu
     :items="items"
     orientation="vertical"
   />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 const route = useRoute()
-const { contactId, planId } = route.params
+const { planId } = route.params
+
+const { backButton = true, urlPrefix = '' } = defineProps<{
+  backButton?: boolean
+  urlPrefix?: string
+  // items?: Array<{ label: string; to: string }>
+}>()
 
 const items = [
-  { label: 'Overview', to: `/contacts/${contactId}/plans/${planId}` },
-  { label: 'Billing', to: `/contacts/${contactId}/plans/${planId}/billing` },
-  { label: 'History', to: `/contacts/${contactId}/plans/${planId}/history` }
+  { label: 'Overview', to: `${urlPrefix}/plans/${planId}` },
+  { label: 'Notes', to: `${urlPrefix}/plans/${planId}/notes` },
+  { label: 'Something Else', to: `${urlPrefix}/plans/${planId}/history` }
 ]
 
 const backToPlans
-  = `/contacts/${route.params.contactId}/plans`
+  = `/${urlPrefix}/plans`
 </script>

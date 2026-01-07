@@ -2,21 +2,12 @@
 <template>
   <AppPageWrapper class="space-y-6 grid grid-cols-[200px_1fr]">
     <div class="min-w-50 pr-2">
-      <ContactSubNav v-if="showContactNav" />
-      <PlanSubNav
-        v-else
-        :url-prefix="`contacts/${route.params.contactId}`"
-      />
+      <PlanSubNav :back-button="false" />
     </div>
 
     <div class="outline outline-white   grow p-3">
-      <ContactHeaderCard
-        v-if="showContactNav"
-        :contact="{ name: 'Contact Name', email: 'contact@example.com' }"
-        class="mb-8"
-      />
       <PlanHeaderCard
-        v-else
+
         :plan="{ name: 'Plan Name', status: 'Active' }"
         class="mb-8"
       />
@@ -30,8 +21,4 @@
 
 <script lang="ts" setup>
 const route = useRoute()
-
-const showContactNav = computed(() =>
-  !route.fullPath.includes('/plans/')
-)
 </script>

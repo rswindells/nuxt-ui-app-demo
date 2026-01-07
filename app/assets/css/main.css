@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+body, html {
+  height: 100%;
+  min-height: 100%;
+}
+
+
 @theme static {
   --font-sans: 'Public Sans', sans-serif;
 
